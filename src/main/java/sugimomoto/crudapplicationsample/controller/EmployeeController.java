@@ -29,7 +29,7 @@ public class EmployeeController {
         return "form";
     }
 
-    @PostMapping("/porcess")
+    @PostMapping("/process")
     public String process(@Validated @ModelAttribute Employee employee, BindingResult result){
         
         if(result.hasErrors()){
