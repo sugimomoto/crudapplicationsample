@@ -19,7 +19,7 @@ public class EmployeeController {
     private final EmployeeRepository repository;
 
     @GetMapping("/")
-    public String showList(Model model){
+    public String showList(@ModelAttribute Employee employee, Model model){
         model.addAttribute("employees", repository.findAll());
         return "index";
     }
@@ -27,6 +27,12 @@ public class EmployeeController {
     @GetMapping("/add")
     public String addEmployee(@ModelAttribute Employee employee){
         return "form";
+    }
+
+    @PostMapping("/search")
+    public String search(@ModelAttribute Employee employee, BindingResult result, Model model){
+        model.addAttribute("employees", repository.findByNameLike("%" + employee.getName() + "%"));
+        return "index";
     }
 
     @PostMapping("/process")
