@@ -44,9 +44,7 @@
               </div>
               <div class="card-body">
 
-                <div th:if="${employees.size() == 0}">
-                  該当データがありません
-                </div>
+                <p th:text="${count} + '件のデータがあります。'"></p>
 
                 <table th:if="${employees.size() > 0}"
                   class="table table-bordered">

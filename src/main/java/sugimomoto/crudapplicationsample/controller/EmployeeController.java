@@ -21,6 +21,7 @@ public class EmployeeController {
     @GetMapping("/")
     public String showList(@ModelAttribute Employee employee, Model model){
         model.addAttribute("employees", repository.findAll());
+        model.addAttribute("count", repository.findAll().size());
         return "index";
     }
 
