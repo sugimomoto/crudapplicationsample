@@ -32,7 +32,8 @@ public class EmployeeController {
 
     @PostMapping("/search")
     public String search(@ModelAttribute Employee employee, BindingResult result, Model model){
-        model.addAttribute("employees", repository.findByNameLike("%" + employee.getName() + "%"));
+        model.addAttribute("employees", repository.searchByName("%" + employee.getName() + "%"));
+        model.addAttribute("count", repository.searchByName("%" + employee.getName() + "%").size());
         return "index";
     }
 
